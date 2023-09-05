@@ -26,8 +26,18 @@ add_action( 'plugins_loaded', function() {
      */
     add_action( 'manage_users_custom_column', function($value, $column_name, $user_id) {
 
+        // WordPress default date format and time format:
+
+        $df     = get_option( 'date_format', 'Y-m-d' );
+        $tf     = get_option( 'time_format', 'H:i:s' );
+
+
+        // Custom date/time format option (can be set via WP-CLI or similar, no config is currently provided):
+
+        $dtf    = get_option( 'squelchuserregdate_format', $df . ' ' . $tf );
+
         $user = get_userdata( $user_id );
-        if ( 'user_registered' == $column_name ) return $user->user_registered;
+        if ( 'user_registered' === $column_name ) return date( $dtf, strtotime( $user->user_registered ) );
         return $value;
 
     }, 10, 3 );
