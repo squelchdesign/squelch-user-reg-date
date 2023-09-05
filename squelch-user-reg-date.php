@@ -5,7 +5,7 @@
 * Version: 1.0
 * Author: Matt Lowe { Squelch Design }
 * License: GPL2
-* Text Domain: squelch-user-registration-date
+* Text Domain: squelch-user-reg-date
 * Domain Path: /languages
 */
 
@@ -15,7 +15,7 @@ add_action( 'plugins_loaded', function() {
      * Add a custom column heading for the user registration date
      */
     add_filter( 'manage_users_columns', function($columns) {
-        $columns['user_registered'] = 'Registration Date';
+        $columns['user_registered'] = __( 'Registration Date', 'squelch-user-reg-date' );
         return $columns;
     } );
 
