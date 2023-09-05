@@ -9,6 +9,12 @@
 * Domain Path: /languages
 */
 
+// Exit if accessed directly
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+
+
 add_action( 'plugins_loaded', function() {
 
     /**
@@ -30,7 +36,6 @@ add_action( 'plugins_loaded', function() {
 
         $df     = get_option( 'date_format', 'Y-m-d' );
         $tf     = get_option( 'time_format', 'H:i:s' );
-
 
         // Custom date/time format option (can be set via WP-CLI or similar, no config is currently provided):
 
